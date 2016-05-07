@@ -24,13 +24,8 @@ $(function() {
 	$('.draggable').draggable();
 })
 
-$('canvas').drawArc({
-  fillStyle: 'black',
-  x: 100, y: 100,
-  radius: 50
-});
 
-$('canvas')
+$('canvas#first')
 .drawArc({
   layer: true,
   draggable: true,
@@ -48,6 +43,34 @@ $('canvas')
   width: 100, height: 100
 });
 
+// Add rectangle layer w/o drawing
+$('#second').addLayer({
+  type: 'rectangle',
+  draggable: true,
+  fillStyle: '#fff',
+  strokeStyle: '#c33',
+  strokeWidth: 2,
+  x: 160, y: 150,
+  width: 150, height: 80,
+  handlePlacement: 'both',
+  handle: {
+    type: 'arc',
+    fillStyle: '#fff',
+    strokeStyle: '#c33',
+    strokeWidth: 2,
+    radius: 10
+  },
+  handlestart: function(layer) {
+    // code to run when resizing starts
+  },
+  handlemove: function(layer) {
+    // code to run while resizing
+  },
+  handlestop: function(layer) {
+    // code to run while resizing stops
+  }
+})
+.drawLayers();
 
 // w3 schools solution
 function createShape() {
